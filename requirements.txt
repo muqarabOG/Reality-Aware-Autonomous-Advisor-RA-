@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic
+numpy
+pandas
+opencv-python
+torch
+torchvision
+stable-baselines3
+river
+python-dotenv
+websockets
