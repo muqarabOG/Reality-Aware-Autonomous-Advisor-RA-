@@ -16,12 +16,18 @@ class ReasoningEngine:
         # Simple logical rules
         proximity = perception.sensor_data.get("proximity", 100)
         vibration = perception.sensor_data.get("vibration", 0)
-        obstacle_count = len([e for e in perception.entities if e.label == "obstacle"])
+        
+        # Treat specific real-world objects as critical obstacles
+        CRITICAL_LABELS = ['person', 'obstacle']
+        CAUTION_LABELS = ['cell phone', 'scissors', 'backpack']
+        
+        obstacle_count = len([e for e in perception.entities if e.label in CRITICAL_LABELS])
+        caution_count = len([e for e in perception.entities if e.label in CAUTION_LABELS])
 
-        if proximity < 5:
-            conclusions.append("CRITICAL: Emergency Stop Recommended")
-        elif proximity < 15:
-            conclusions.append("CAUTION: Reducing Speed")
+        if proximity < 5 or obstacle_count > 0:
+            conclusions.append(f"CRITICAL: Emergency Stop - {obstacle_count} high-risk entities detected")
+        elif proximity < 15 or caution_count > 0:
+            conclusions.append(f"CAUTION: Potential risk - {caution_count} objects detected")
 
         if vibration > 0.85:
             conclusions.append("ALERT: High vibration detected - Maintenance required")

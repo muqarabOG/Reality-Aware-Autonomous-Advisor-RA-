@@ -1,4 +1,38 @@
-"venv/" 
-"__pycache__/" 
-"node_modules/" 
-"*.pyc" 
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Local Data/Binaries
+mission_history.db
+snapshots/
+yolov8n.pt
+
+# Packaging
+dist/
+build/
+*.egg-info/
+
+# Frontend
+node_modules/
+dashboard/dist/
+dashboard/build/
+.eslintcache
+
+# OS
+.DS_Store
+Thumbs.db

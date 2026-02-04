@@ -21,6 +21,7 @@ class ReasoningState(BaseModel):
     probabilistic_world_model: Dict[str, float]
     suggested_actions: List[str]
     safety_score: float
+    active_alerts: List[str] = []
 
 class ActionRecommendation(BaseModel):
     action_id: str
@@ -33,3 +34,7 @@ class RA3FullState(BaseModel):
     reasoning: ReasoningState
     decision: ActionRecommendation
     feedback_loop_status: str
+    snapshot_captured: bool = False
+    current_position: List[float] = [0.0, 0.0]
+    goal_position: List[float] = [10.0, 10.0]
+    scene_description: str = ""

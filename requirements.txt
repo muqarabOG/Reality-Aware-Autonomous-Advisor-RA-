@@ -10,3 +10,5 @@ stable-baselines3
 river
 python-dotenv
 websockets
+ultralytics
+pyttsx3
